@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Button, Text, Heading } from "../../components/index.jsx";
 import RiversideParkDevelopment from "../../components/RiversideParkDevelopment";
 import React,{Suspense} from "react";
@@ -34,6 +35,7 @@ const data = [
 ];
 
 export default function HomepagecolouredColumnFour() {
+    const navigate=useNavigate();
     return (
         <div className="mt-40 flex flex-col items-center">
             <div className="container-xs flex flex-col items-center md:gap-20 gap-[60px] p-5 md:p-0 ">
@@ -57,7 +59,7 @@ export default function HomepagecolouredColumnFour() {
                         ))}
                     </Suspense>
                 </div>
-                <Button color="gray_600" shape="square" className="min-w-[162px] font-bold">
+                <Button color="gray_600" shape="square" className="min-w-[162px] font-bold" onClick={()=>navigate('/upcomingevents')}>
                     Explore All
                 </Button>
             </div>

@@ -4,9 +4,9 @@ export default function Footer({ ...props }) {
   return (
     <footer
       {...props}
-      className={`${props.className} flex justify-center items-end md:py-[26px] py-5 bg-blue_gray-800_01`}
+      className={`${props.className} flex flex-col justify-center items-end md:py-[26px] py-5 bg-blue_gray-800_01`}
     >
-      <div className="container-xs mt-8 flex justify-center md:p-5">
+      <div className="container-xs mt-8 flex justify-center md:p-5 ">
         <div className="flex w-[94%] md:w-full flex-col md:flex-row items-start justify-between gap-5 ">
           <div className="flex md:w-[24%] flex-col items-start self-center w-full">
             <div className="flex rounded-[10px] bg-white-a700 p-2">
@@ -21,13 +21,6 @@ export default function Footer({ ...props }) {
               solutions. Join users in shaping our cities for a sustainable
               future
             </Text>
-            <Heading
-              size="headingxs"
-              as="h6"
-              className="mt-[92px] !text-[16px] !font-bold"
-            >
-              Copyright claim
-            </Heading>
           </div>
           <div className="mt-3 flex md:w-[64%] w-full flex-col md:flex-row items-start justify-between gap-6 ">
             <div className="flex md:w-[40%] flex-col items-start gap-[34px] w-full">
@@ -86,17 +79,7 @@ export default function Footer({ ...props }) {
               </li>
               <li>
                 <a href="#" className="mt-[34px]">
-                  <Text as="p">About Carolina</Text>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-[18px]"
-                >
-                  <Text as="p">COVID-19</Text>
+                  <Text as="p">About CIVIQUE</Text>
                 </a>
               </li>
               <li>
@@ -157,6 +140,13 @@ export default function Footer({ ...props }) {
           </div>
         </div>
       </div>
+      <Heading
+              size="headingxs"
+              as="h4"
+              className=" !text-[16px] !font-bold w-full  justify-center flex"
+            >
+              @  {new Date().getFullYear()} CIVIQUE. All rights reserved 
+        </Heading>
     </footer>
   );
 }

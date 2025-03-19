@@ -7,25 +7,25 @@ import React, { Suspense } from "react";
 
 const data = [
   {
-    userImage: "images/img_hospital.svg",
+    userImage: "images/BudgetTransparencyWebinar.jpg",
     userName: "Budget Transparency Webinar",
     userDescription:
       "Learn about the financial aspects of ongoing and upcoming projects. Join our webinar to understand budget allocations and promote transparent governance",
   },
   {
-    userImage: "images/img_health_report.svg",
+    userImage: "images/CommunityEngagementWorkshop.jpg",
     userName: "Community Engagement Workshop",
     userDescription:
       "Join our interactive workshop to discuss local government initiatives, share ideas, and shape the future of urban development through participatory democracy",
   },
   {
-    userImage: "images/img_money_paper.svg",
+    userImage: "images/UrbanPlanningDiscussionForum.jpg",
     userName: "Urban Planning Discussion Forum",
     userDescription:
       "Engage in discussions about city planning and development. Share your views on project timelines, document repositories, and influence tracking.",
   },
   {
-    userImage: "images/img_thumbs_up.svg",
+    userImage: "images/CommunityFeedbackSession.jpg",
     userName: "Community Feedback Session",
     userDescription:
       "Join our session dedicated to collecting feedback on current and future projects. Help us create a city that reflects the needs of its residents",
@@ -63,7 +63,7 @@ export default function HomepagecolouredRowcurrent() {
           </div>
         </div>
         <Button color="gray_600" shape="square" className="min-w-[198px] font-bold">
-        <Link to="/projectscolored">
+        <Link to="/projects">
           See All Projects{" "}
           </Link>
         </Button>

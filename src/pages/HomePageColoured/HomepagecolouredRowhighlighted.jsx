@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import { Button, Text, Heading, Img } from "../../components";
 import React from "react";
 
 export default function HomepagecolouredRowhighlighted() {
+  const navigate=useNavigate();
   return (
     <div className="mt-[62px] flex items-center justify-between gap-5 flex-col md:flex-row">
       <div className="flex md:w-[48%] justify-center bg-gray-300  w-full p-5 md:p-0">
@@ -24,7 +26,7 @@ export default function HomepagecolouredRowhighlighted() {
         <Text as="p" className="mt-6 w-[78%] leading-[26px] !text-gray-600_01 md:w-full">
         Explore Highlighted Projects to see how participatory budgeting is transforming local government decision-making. Discover how citizen participation and community engagement are shaping urban development and city planning. Learn about public consultation processes, project proposal submissions, idea voting,public feedbacks and budget transparency. 
         </Text>
-        <Button color="gray_600" shape="square" className="mt-14 min-w-[238px] font-bold">
+        <Button color="gray_600" shape="square" className="mt-14 min-w-[238px] font-bold" onClick={()=>navigate("/about")}>
           Learn More about us
         </Button>
       </div>

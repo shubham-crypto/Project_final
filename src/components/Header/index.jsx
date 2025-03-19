@@ -136,37 +136,37 @@ export default function Header({ ...props }) {
                 <div className="absolute top-32 left-0 w-full bg-gray-200 border-t-2 shadow-lg md:hidden">
                     <div className="flex flex-col space-y-4 p-4">
                         <div
-                            className="font-semibold cursor-pointer"
+                            className="cursor-pointer border-b border-gray-400 pb-2  hover:text-gray-600"
                             onClick={() => navigate('/Home')}
                         >
                             Home
                         </div>
                         <div
-                            className="cursor-pointer"
+                            className="cursor-pointer border-b border-gray-400 pb-2 hover:text-gray-600"
                             onClick={() => navigate('/projects')}
                         >
                             Projects
                         </div>
                         <div
-                            className="cursor-pointer"
+                            className="cursor-pointer border-b border-gray-400 pb-2 hover:text-gray-600"
                             onClick={() => navigate('/gis-integration')}
                         >
                             Maps
                         </div>
                         <div
-                            className="cursor-pointer"
+                            className="cursor-pointer border-b border-gray-400 pb-2 hover:text-gray-600"
                             onClick={() => navigate('/contact')}
                         >
                             Contact Us
                         </div>
                         <div
-                            className="cursor-pointer"
+                            className="cursor-pointer border-b border-gray-400 pb-2 hover:text-gray-600"
                             onClick={() => navigate('/about')}
                         >
                             About us
                         </div>
                         <div
-                            className="cursor-pointer"
+                            className="cursor-pointer border-b border-gray-400 pb-2 hover:text-gray-600"
                             onClick={() => navigate('/survey')}
                         >
                             Survey

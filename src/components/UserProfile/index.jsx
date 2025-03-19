@@ -13,8 +13,8 @@ export default function UserProfile({
       {...props}
       className={`${props.className} flex flex-col items-start w-full gap-7 p-8 sm:p-5 bg-gray-50_01 cursor-pointer hover:shadow-xs`}
     >
-      <div className="flex flex-col items-center rounded-[40px] bg-teal-50 p-5">
-        <Img src={userImage} alt="Lorem Ipsum" className="h-[40px] w-[40px]" />
+     <div className="flex flex-col items-center rounded-[40px] bg-teal-50 h-40 w-40 overflow-hidden">
+        <Img src={userImage} alt="Lorem Ipsum" className="h-full w-full object-cover" />
       </div>
       <div className="flex flex-col items-start gap-2 self-stretch">
         <Heading as="h4" className="!text-[24px] capitalize !text-blue_gray-900_01">

@@ -12,6 +12,7 @@ import Survey from "./pages/Survey";
 import UserInfo from "./pages/UserInfo";
 import ProtectedRoute from "./components/ProtectedRoutes/ProtectedRoute";
 import MoreInfoPageForAProjectPrevFwcards from "./components/MoreInfoPageForAProjectPrevFwcards/MoreInfoPageForAProjectPrev";
+import UpcomingEvents from "./pages/UpcomingEvents/UpcomingEvents";
 
 
 const ProjectRoutes = () => {
@@ -35,6 +36,7 @@ const ProjectRoutes = () => {
         },
         { path: "/contact", element: <ContactUs /> },
         { path: "/survey", element: <Survey /> },
+        {path:'/upcomingevents',element:<UpcomingEvents/>},
         {
             path: "/profile",
             element: <ProtectedRoute element={<UserInfo />} />,

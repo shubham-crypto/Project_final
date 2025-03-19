@@ -8,6 +8,7 @@ import HomepagecolouredColumnFour from "./HomepagecolouredColumnFour";
 import HomepagecolouredRowcurrent from "./HomepagecolouredRowcurrent";
 import HomepagecolouredRowhighlighted from "./HomepagecolouredRowhighlighted";
 import React, { Suspense } from "react";
+import { useNavigate } from "react-router-dom";
 
 const data = [
     {
@@ -37,6 +38,7 @@ const data = [
 ];
 
 export default function HomePageColouredPage() {
+    const navigate=useNavigate();
     return (
         <>
             <div className="w-full bg-white-a700">
@@ -46,20 +48,20 @@ export default function HomePageColouredPage() {
                         <div className="flex flex-col items-center">
                             <div className="flex flex-col items-center self-stretch bg-blue_gray-800_cc md:py-20 py-10">
                                 <div className="container-xs mb-20 flex flex-col items-start p-5 md:p-0">
-                                    <Heading size="heading3x1" as="h1" className="capitalize leading-tight text-center">
+                                    <Heading size="heading3x1" as="h1" className="capitalize leading-tight">
                                         <>
                                             Join the movement
                                             <br />
                                             Make your voice heard
                                         </>
                                     </Heading>
-                                    <Text as="p" className="mt-6 leading-relaxed text-center">
+                                    <Text as="p" className="mt-6 leading-relaxed ">
                                         <>
                                             Engage with your community, share your ideas, and work towards building <br />a more inclusive,
                                             sustainable future for all.
                                         </>
                                     </Text>
-                                    <Button color="gray_600" shape="square" className="mt-14 w-full md:max-w-[166px] font-bold">
+                                    <Button color="gray_600" shape="square" className="mt-14 w-full md:max-w-[166px] font-bold" onClick={() => {navigate('/survey')}}>
                                         Learn More
                                     </Button>
                                 </div>
