@@ -1,7 +1,10 @@
-import { Button, Img, Heading } from "../../components";
+import { Button, Img, Heading } from "../../../components";
 import React from "react";
 
-export default function MoreinfopageforaprojectprevRowgetinvolvedi() {
+export default function SurveyBanner() {
+  const handleScrollToDiscussion = () => {
+    document.getElementById("discussion-forum")?.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <div className="mt-24">
       <div className="flex flex-col items-start justify-center bg-gradient-to-r from-yellow-400 to-yellow-200 p-32">
@@ -26,6 +29,7 @@ export default function MoreinfopageforaprojectprevRowgetinvolvedi() {
         <Button
           color="deep_orange_A700"
           size="md"
+          onClick={handleScrollToDiscussion}
           rightIcon={
             <Img
               src="images/img_arrowright.svg"
