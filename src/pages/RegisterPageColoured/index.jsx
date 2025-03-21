@@ -52,10 +52,10 @@ export default function RegisterPageColouredPage() {
         alert(formData)
         try {
             const response = await axios.post("http://localhost:5000/api/auth/register", formData);
-            alert("Registration successful!");
+            toast.success(response.data.message);
             navigate("/"); // Redirect to login page
         } catch (error) {
-            alert(error.response?.data?.message || "Registration failed");
+            toast.error(error.response?.data?.message || "Registration failed");
         }
     };
     return (
