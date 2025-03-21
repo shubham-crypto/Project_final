@@ -1,26 +1,7 @@
 import React from "react";
-import { Helmet } from "react-helmet";
-import { Text, Heading, Input, SelectBox, Img } from "../../components";
+import { Text, Heading, Input,  Img } from "../../components";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header";
-
-const genderOptions = [
-  { label: "Male", value: "male" },
-  { label: "Female", value: "female" },
-  { label: "Other", value: "other" },
-];
-
-const contactOptions = [
-  { label: "Email", value: "email" },
-  { label: "Phone", value: "phone" },
-];
-
-const educationOptions = [
-  { label: "High School", value: "highschool" },
-  { label: "Bachelor's Degree", value: "bachelor" },
-  { label: "Master's Degree", value: "master" },
-  { label: "Ph.D.", value: "phd" },
-];
 
 export default function UserProfilePage() {
   return (
@@ -101,48 +82,15 @@ export default function UserProfilePage() {
                 }}
               />
               <div className="flex justify-between gap-5">
-                <SelectBox
-                  shape="round"
-                  indicator={
-                    <Img
-                      src="images/img_arrowdown.svg"
-                      alt="Arrow Down"
-                      className="h-[16px] w-[16px] pl-1"
-                    />
-                  }
-                  getOptionLabel={(e) => (
-                    <>
-                      <div className="flex items-center">
-                        <span>{e.label}</span>
-                      </div>
-                    </>
-                  )}
-                  name="gender"
-                  placeholder="Gender"
-                  options={genderOptions}
-                  className="bg-gray-200 h-[40px] pl-4 w-1/2"
-                />
-                <SelectBox
-                  shape="round"
-                  indicator={
-                    <Img
-                      src="images/img_arrowdown.svg"
-                      alt="Arrow Down"
-                      className="h-[16px] w-[16px] pl-1"
-                    />
-                  }
-                  getOptionLabel={(e) => (
-                    <>
-                      <div className="flex items-center">
-                        <span>{e.label}</span>
-                      </div>
-                    </>
-                  )}
-                  name="contactMethod"
-                  placeholder="Preferred Contact Method"
-                  options={contactOptions}
-                  className="bg-gray-200 h-[40px] pl-4 w-1/2"
-                />
+                <select 
+                  name="gender" 
+                  className="md:ml-[42px] md:w-[14%] w-full h-[40px] px-4 rounded-md text-white-a700 bg-blue_gray-800 text-white font-bold"
+                  >
+                  <option value="" disabled selected>Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
               </div>
             </div>
           </div>
@@ -179,58 +127,20 @@ export default function UserProfilePage() {
                 placeholder="PIN Code"
                 className="w-full"
               />
-              <SelectBox
-                shape="round"
-                indicator={
-                  <Img
-                    src="images/img_arrowdown.svg"
-                    alt="Arrow Down"
-                    className="h-[16px] w-[16px] pl-1"
-                  />
-                }
-                getOptionLabel={(e) => (
-                  <>
-                    <div className="flex items-center">
-                      <span>{e.label}</span>
-                    </div>
-                  </>
-                )}
-                name="education"
-                placeholder="Educational Qualification"
-                options={educationOptions}
-                className="w-full bg-gray-200 h-[40px] pl-4"
-              />
+                <select
+                  name="preferred_one"
+                  className="w-[64%] h-[40px] px-4 rounded-md text-white-a700 bg-blue_gray-800 font-bold focus:outline-none"
+                  >
+                  <option value="" disabled selected>
+                      Educational Qualification
+                  </option>
+                  <option value="high_school">High School</option>
+                  <option value="bachelor">Bachelor's</option>
+                  <option value="master">Master's</option>
+                  <option value="phd">PhD</option>
+              </select>
             </div>
           </div>
-          {/* <div className="mb-8"> */}
-          {/* <Heading
-              size="headinglg"
-              as="h3"
-              className="!font-inter !text-black-900 mb-4"
-            >
-              Terms and Policies
-            </Heading> */}
-          {/* <div className="flex flex-col space-y-4"> */}
-          {/* <label className="flex items-center gap-2">
-                                <input type="checkbox" name="terms" className="form-checkbox" />
-                                <Text size="textmd" className="text-black-900">
-                                    I agree to the Terms of Service
-                                </Text>
-                            </label>
-                            <label className="flex items-center gap-2">
-                                <input type="checkbox" name="cookiePolicy" className="form-checkbox" />
-                                <Text size="textmd" className="text-black-900">
-                                    I agree to the Cookie Policy
-                                </Text>
-                            </label>
-                            <label className="flex items-center gap-2">
-                                <input type="checkbox" name="privacyPolicy" className="form-checkbox" />
-                                <Text size="textmd" className="text-black-900">
-                                    I agree to the Privacy Policy
-                                </Text>
-                            </label> */}
-          {/* </div> */}
-          {/* </div> */}
           <div className="flex justify-between items-center">
             <button className="bg-yellow-500  text-white py-2 px-4 rounded hover:bg-yellow-400">
               Update Profile

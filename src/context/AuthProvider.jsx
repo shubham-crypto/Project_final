@@ -1,59 +1,40 @@
-import { jwtDecode } from "jwt-decode";
-import React, { createContext, useContext, useEffect, useState } from "react";
-
-import { useNavigate } from "react-router-dom";
+import { createContext, useState, useEffect, useContext } from "react";
 
 const AuthContext = createContext();
 
+export const useAuth = () => useContext(AuthContext);
+
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(() => {
-        const storedUser = localStorage.getItem("user");
-        return storedUser ? JSON.parse(storedUser) : null;
-    });
+  const [user, setUser] = useState(null);
 
-    const navigate = useNavigate();
+  // Check local storage on app start
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    const token = localStorage.getItem("token");
+    if (storedUser && token) {
+      setUser(JSON.parse(storedUser)); // Parse user data from localStorage
+    }
+  }, []);
 
-    const checkTokenExpiry = () => {
-        const token = localStorage.getItem("token");
-        if (!token) return logout();
+  // Login function (stores user & token)
+  const login = (userData) => {
+    localStorage.setItem("user", JSON.stringify(userData));
+    localStorage.setItem("token", userData.token);
+    setUser(userData);
+  };
 
-        try {
-            const decoded = jwtDecode(token);
-            const currentTime = Date.now() / 1000;
+  // Logout function (clears storage)
+  const logout = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    setUser(null);
+  };
 
-            if (decoded.exp < currentTime) {
-                logout();
-            } else {
-                setTimeout(() => logout(), (decoded.exp - currentTime) * 1000);
-            }
-        } catch (error) {
-            logout();
-        }
-    };
-
-    const login = (token, userData) => {
-        localStorage.setItem("token", token);
-        localStorage.setItem("user", JSON.stringify(userData));
-        setUser(userData);
-        checkTokenExpiry();
-    };
-
-    const logout = () => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("user");
-        setUser(null);
-        navigate("/");
-    };
-
-    useEffect(() => {
-        checkTokenExpiry();
-    }, []);
-
-    return (
-        <AuthContext.Provider value={{ user, login, logout }}>
-            {children}
-        </AuthContext.Provider>
-    );
+  return (
+    <AuthContext.Provider value={{ user, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
-export const useAuth = () => useContext(AuthContext);
+export default AuthContext;
