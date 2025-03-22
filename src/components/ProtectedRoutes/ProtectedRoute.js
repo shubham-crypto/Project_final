@@ -4,12 +4,12 @@ import { useAuth } from "../../context/AuthProvider";
 
 
 const ProtectedRoute = ({ element }) => {
-    const { user } = useAuth();
-    const location = useLocation();
+    // const { user } = useAuth();
+    // const location = useLocation();
 
-    if (!user) {
-        return <Navigate to="/" state={{ from: location }} />;
-    }
+    // if (!user) {
+    //     return <Navigate to="/" state={{ from: location }} />;
+    // }
 
     return element;
 };
