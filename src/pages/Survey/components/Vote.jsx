@@ -1,18 +1,26 @@
 import React, { useState, useEffect } from "react";
 
 const Vote = () => {
-  const [polls, setPolls] = useState([
-    { id: 1, question: "Should we build a new park?", yes: 10, no: 5, notSure: 3 },
-    { id: 2, question: "Should we increase bike lanes?", yes: 7, no: 8, notSure: 4 },
-    { id: 3, question: "Should we add more public transport?", yes: 12, no: 3, notSure: 6 }
-  ]);
-
-  const [votedPolls, setVotedPolls] = useState(() => {
-    return JSON.parse(localStorage.getItem("votedPolls")) || {};  
+  const [polls, setPolls] = useState(() => {
+    return JSON.parse(localStorage.getItem("polls")) || [
+      { id: 1, question: "Should we build a new park?", yes: 10, no: 5, notSure: 3 },
+      { id: 2, question: "Should we increase bike lanes?", yes: 7, no: 8, notSure: 4 },
+      { id: 3, question: "Should we add more public transport?", yes: 12, no: 3, notSure: 6 }
+    ];
   });
 
+  const [votedPolls, setVotedPolls] = useState(() => {
+    return JSON.parse(localStorage.getItem("votedPolls")) || {};
+  });
+
+  const [newPoll, setNewPoll] = useState(""); // Input for new poll question
+
   useEffect(() => {
-    localStorage.setItem("votedPolls", JSON.stringify(votedPolls));  
+    localStorage.setItem("polls", JSON.stringify(polls));
+  }, [polls]);
+
+  useEffect(() => {
+    localStorage.setItem("votedPolls", JSON.stringify(votedPolls));
   }, [votedPolls]);
 
   const handleVote = (id, choice) => {
@@ -23,11 +31,11 @@ const Vote = () => {
         let updatedPoll = { ...poll };
 
         if (votedPolls[id]) {
-          const prevChoice = votedPolls[id];  
-          updatedPoll[prevChoice] -= 1;  
+          const prevChoice = votedPolls[id];
+          updatedPoll[prevChoice] -= 1;
         }
 
-        updatedPoll[choice] += 1;  
+        updatedPoll[choice] += 1;
 
         return updatedPoll;
       })
@@ -35,8 +43,23 @@ const Vote = () => {
 
     setVotedPolls((prevVotes) => ({
       ...prevVotes,
-      [id]: choice,  
+      [id]: choice,
     }));
+  };
+
+  const handleAddPoll = () => {
+    if (!newPoll.trim()) return;
+
+    const newPollData = {
+      id: polls.length + 1,
+      question: newPoll,
+      yes: 0,
+      no: 0,
+      notSure: 0,
+    };
+
+    setPolls([...polls, newPollData]);
+    setNewPoll(""); // Reset input field
   };
 
   return (
@@ -45,6 +68,23 @@ const Vote = () => {
         <h2 className="bg-gradient-to-r w-fit from-yellow-400 to-yellow-200 md:px-[34px] rounded-md py-4 text-gray-900 px-5 text-xl font-semibold text-center">
           Live Polls
         </h2>
+      </div>
+
+      {/* Add Poll Form */}
+      <div className="mt-4 flex gap-4 justify-center">
+        <input
+          type="text"
+          value={newPoll}
+          onChange={(e) => setNewPoll(e.target.value)}
+          placeholder="Enter poll question..."
+          className="border !p-2 !rounded-md w-96 focus:ring-2 focus:ring-yellow-400 focus:border-yellow-500 outline-none"
+        />
+        <button
+          onClick={handleAddPoll}
+          className="px-4 py-2 bg-yellow-400 hover:bg-yellow-500 text-white rounded-md "
+        >
+          Add Poll
+        </button>
       </div>
 
       <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
