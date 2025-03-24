@@ -1,16 +1,9 @@
 import React, { useState } from "react";
 import Comment from "./Comment";
 
-const CommentSection = ({ ideaId }) => {
-  const [comments, setComments] = useState([]);
+const CommentSection = ({ ideaId,comments, onAddComment }) => {
   const [newComment, setNewComment] = useState("");
   const [isExpanded, setIsExpanded] = useState(false);
-
-  const addComment = () => {
-    if (!newComment.trim()) return;
-    setComments([...comments, { id: Date.now(), text: newComment, likes: 0, replies: [] }]);
-    setNewComment("");
-  };
 
   return (
     <div >
@@ -43,7 +36,12 @@ const CommentSection = ({ ideaId }) => {
             className="w-full !p-2 border !rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
           />
           <button
-            onClick={addComment}
+            onClick={() => {
+                if (newComment.trim()) {
+                  onAddComment(ideaId, newComment);
+                  setNewComment("");
+                }
+              }}
             className="bg-yellow-400 text-white-a700 px-4 py-2 rounded-md font-medium hover:bg-yellow-500 transition"
           >
             Comment

@@ -1,7 +1,7 @@
 import React from "react";
 import CommentSection from "./CommentSection";
 
-const IdeaList = ({ ideas, onVote, userVotes }) => {
+const IdeaList = ({ ideas, onVote, userVotes, onAddComment }) => {
   return (
     <div className="flex flex-col space-y-4">
       {ideas.map((idea) => (
@@ -38,7 +38,7 @@ const IdeaList = ({ ideas, onVote, userVotes }) => {
               </button>
             </div>
           </div>
-          <CommentSection ideaId={idea.id} />
+          <CommentSection ideaId={idea.id} comments={idea.comments} onAddComment={onAddComment} />
         </div>
       ))}
     </div>
