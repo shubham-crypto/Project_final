@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import IdeaForm from "./IdeaForm";
 import IdeaList from "./IdeaList";
 import DiscussionAnalytics from "./DiscussionAnalytics";
@@ -17,7 +17,7 @@ const DiscussionForum = () => {
         { id: 2, text: "Would love to see better connectivity between suburban areas." }
       ],
       username: "John Doe",
-      userProfile: "https://via.placeholder.com/40"
+      userProfile: "/images/john.jpg"
     },
     {
       id: 2,
@@ -30,7 +30,7 @@ const DiscussionForum = () => {
         { id: 2, text: "We also need to maintain existing parks better." }
       ],
       username: "Alice Green",
-      userProfile: "https://via.placeholder.com/40"
+      userProfile: "/images/alicia.jpg"
     },
     {
       id: 3,
@@ -43,7 +43,7 @@ const DiscussionForum = () => {
         { id: 2, text: "We should also improve road quality to reduce congestion." }
       ],
       username: "Mark Tech",
-      userProfile: "https://via.placeholder.com/40"
+      userProfile: "/images/mark.jpg"
     }
   ]);
 
@@ -63,29 +63,61 @@ const DiscussionForum = () => {
     ]);
   };
 
+  const [userVotes, setUserVotes] = useState({});
+
+  useEffect(() => {
+    const storedVotes = JSON.parse(localStorage.getItem("userVotes")) || {};
+    setUserVotes(storedVotes);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("userVotes", JSON.stringify(userVotes));
+  }, [userVotes]);
+
   const handleVote = (id, type) => {
-    setIdeas(ideas.map(idea =>
-      idea.id === id
-        ? { ...idea, [type]: idea[type] + 1 }
-        : idea
-    ));
+    setIdeas((prevIdeas) =>
+      prevIdeas.map((idea) => {
+        if (idea.id === id) {
+          const currentVote = userVotes[id];
+
+          let newLikes = idea.likes;
+          let newDislikes = idea.dislikes;
+
+          if (currentVote === type) {
+            newLikes = type === "likes" ? idea.likes - 1 : idea.likes;
+            newDislikes = type === "dislikes" ? idea.dislikes - 1 : idea.dislikes;
+            setUserVotes((prev) => ({ ...prev, [id]: null }));
+          } else {
+            if (currentVote === "likes") newLikes -= 1;
+            if (currentVote === "dislikes") newDislikes -= 1;
+
+            newLikes = type === "likes" ? newLikes + 1 : newLikes;
+            newDislikes = type === "dislikes" ? newDislikes + 1 : newDislikes;
+
+            setUserVotes((prev) => ({ ...prev, [id]: type }));
+          }
+
+          return { ...idea, likes: newLikes, dislikes: newDislikes };
+        }
+        return idea;
+      })
+    );
   };
+
 
   return (
     <div id="discussion-forum" className="p-6">
-      {/* Header */}
       <div className="flex justify-center">
         <h2 className="bg-gradient-to-r from-yellow-400 to-yellow-200 text-white text-xl font-semibold px-6 py-3 rounded-md shadow-md">
           Discussion Forum
         </h2>
       </div>
 
-      {/* Idea Form */}
       <div className="mt-6 bg-white p-6 rounded-lg shadow-md border">
         <IdeaForm onAddIdea={handleAddIdea} />
       </div>
       <div className="mt-6">
-        <IdeaList ideas={ideas} onVote={handleVote} />
+        <IdeaList ideas={ideas} onVote={handleVote} userVotes={userVotes}/>
       </div>
       <DiscussionAnalytics /> 
     </div>

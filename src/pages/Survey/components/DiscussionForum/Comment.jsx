@@ -1,10 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Comment = ({ comment }) => {
   const [likes, setLikes] = useState(comment.likes);
   const [reply, setReply] = useState("");
   const [replies, setReplies] = useState([]);
   const [showReplies, setShowReplies] = useState(false); 
+  const [hasLiked, setHasLiked] = useState(false);
+  useEffect(() => {
+    const storedLikes = JSON.parse(localStorage.getItem("commentLikes")) || {};
+    if (storedLikes[comment.id]) {
+      setHasLiked(true);
+    }
+  }, [comment.id]);
+
+  const handleLike = () => {
+    const storedLikes = JSON.parse(localStorage.getItem("commentLikes")) || {};
+
+    if (hasLiked) {
+      setLikes(likes - 1);
+      setHasLiked(false);
+      delete storedLikes[comment.id];
+    } else {
+      setLikes(likes + 1);
+      setHasLiked(true);
+      storedLikes[comment.id] = true;
+    }
+
+    localStorage.setItem("commentLikes", JSON.stringify(storedLikes));
+  };
 
   const handleReply = () => {
     if (!reply.trim()) return;
@@ -19,8 +42,10 @@ const Comment = ({ comment }) => {
       <div className="flex justify-between items-center">
         <p className="text-gray-700">{comment.text}</p>
         <button
-          onClick={() => setLikes(likes + 1)}
-          className="text-sm bg-yellow-200 hover:bg-yellow-300 px-2 py-1 rounded-md"
+          onClick={handleLike}
+          className={`text-sm px-2 py-1 rounded-md ${
+            hasLiked ? "bg-yellow-300 text-white" : "bg-yellow-200 hover:bg-yellow-300"
+          }`}
         >
           👍 {likes}
         </button>
