@@ -11,7 +11,7 @@ export default function Footer({ ...props }) {
           <div className="flex md:w-[24%] flex-col items-start self-center w-full">
             <div className="flex rounded-[10px] bg-white-a700 p-2">
               <Img
-                src="images/img_logo_civique.png"
+                src="/images/img_logo_civique.png"
                 alt="Logocivique"
                 className="h-[48px] w-[48px] object-cover"
               />
@@ -35,7 +35,7 @@ export default function Footer({ ...props }) {
                   <a href="#">
                     <div className="flex gap-4">
                       <Img
-                        src="images/img_linkedin.svg"
+                        src="/images/img_linkedin.svg"
                         alt="Linkedin"
                         className="h-[24px] w-[24px]"
                       />
@@ -47,7 +47,7 @@ export default function Footer({ ...props }) {
                   <a href="#">
                     <div className=" mt-6 ml-[3px] flex gap-4">
                       <Img
-                        src="images/img_lock.svg"
+                        src="/images/img_lock.svg"
                         alt="Lock"
                         className="h-[24px] w-[24px]"
                       />
@@ -59,7 +59,7 @@ export default function Footer({ ...props }) {
                   <a href="#">
                     <div className="mt-6 ml-[3px] flex gap-4">
                       <Img
-                        src="images/img_call.svg"
+                        src="/images/img_call.svg"
                         alt="Call"
                         className="h-[24px] w-[24px]"
                       />
@@ -141,12 +141,12 @@ export default function Footer({ ...props }) {
         </div>
       </div>
       <Heading
-              size="headingxs"
-              as="h4"
-              className=" !text-[16px] !font-bold w-full  justify-center flex"
-            >
-              @  {new Date().getFullYear()} CIVIQUE. All rights reserved 
-        </Heading>
+        size="headingxs"
+        as="h4"
+        className=" !text-[16px] !font-bold w-full  justify-center flex"
+      >
+        @  {new Date().getFullYear()} CIVIQUE. All rights reserved
+      </Heading>
     </footer>
   );
 }

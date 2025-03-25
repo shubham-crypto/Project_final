@@ -1,8 +1,9 @@
 import { Button, Text, Heading, Img } from "./../index.jsx";
 
 import React from "react";
-
+import { Link } from "react-router-dom";
 export default function RiversideParkDevelopment({
+  id,
   userImage = "images/img_1_52.png",
   title = "Riverside Park Development",
   description = "The Riverside Park Development project focuses on transforming the area along the city's riverbank into a vibrant public park. This",
@@ -38,7 +39,7 @@ export default function RiversideParkDevelopment({
             >
               {description}
             </Text>
-            <a href="/moreinfopageforaprojectprev">
+            <Link to={`/project/${id}`}>
               <Button
                 color="deep_orange_A700"
                 shape="square"
@@ -46,7 +47,7 @@ export default function RiversideParkDevelopment({
               >
                 {seeMoreButton}
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

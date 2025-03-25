@@ -7,7 +7,7 @@ export default function Header({ ...props }) {
     const currentPath = location.pathname;
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
-    const navigate=useNavigate()
+    const navigate = useNavigate()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -27,13 +27,12 @@ export default function Header({ ...props }) {
     return (
         <header
             className='fixed top-0 left-0 text-white z-[9999] w-full'>
-            <div className={`flex flex-row  items-center bg-gray-200  ${
-                isScrolled ? 'py-2 px-4 md:px-16 space-x-16 justify-center mt-2 w-fit mx-auto bg-rblack-900 shadow-lg rounded-b-lg rounded-l-full rounded-r-full '
-                : 'py-4 h-24 px-8 md:px-32 justify-between w-full '
-                    } transition-all duration-300 ` }>
+            <div className={`flex flex-row  items-center bg-gray-200  ${isScrolled ? 'py-2 px-4 md:px-16 space-x-16 justify-center mt-2 w-fit mx-auto bg-rblack-900 shadow-lg rounded-b-lg rounded-l-full rounded-r-full '
+                    : 'py-4 h-24 px-8 md:px-32 justify-between w-full '
+                } transition-all duration-300 `}>
                 <Link to="/Home">
                     <Img
-                        src="images/img_header_logo.png"
+                        src="/images/img_header_logo.png"
                         alt="Headerlogo"
                         className="h-12 w-12"
                     />
@@ -41,7 +40,7 @@ export default function Header({ ...props }) {
                 <button
                     className="block md:hidden"
                     onClick={() => setIsOpen(!isOpen)}
-                    >
+                >
                     <svg
                         width="24"
                         height="24"
@@ -51,81 +50,81 @@ export default function Header({ ...props }) {
                         className="w-6 h-6"
                     >
                         <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M4 6h16M4 12h16M4 18h16"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M4 6h16M4 12h16M4 18h16"
                         />
                     </svg>
-                    </button>
-                    <div className="hidden md:flex">
-                        <div className="pt-1">
-                            <svg
-                                width="20"
-                                height="20"
-                                viewBox="0 0 20 20"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M2 18V2H18"
-                                    stroke="gray"
-                                    strokeWidth="3"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-                            </svg>
+                </button>
+                <div className="hidden md:flex">
+                    <div className="pt-1">
+                        <svg
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M2 18V2H18"
+                                stroke="gray"
+                                strokeWidth="3"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            />
+                        </svg>
+                    </div>
+                    <div className="flex flex-row space-x-8 py-4 ">
+                        <div
+                            className="font-semibold cursor-pointer group relative"
+                            onClick={() => navigate('/Home')}
+                        >
+                            Home
+                            <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:left-0"></span>
                         </div>
-                        <div className="flex flex-row space-x-8 py-4 ">
-                            <div
-                                className="font-semibold cursor-pointer group relative"
-                                onClick={() => navigate('/Home')}
-                            >
-                                Home
-                                <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:left-0"></span>
-                            </div>
-                            <div
-                                className="cursor-pointer group relative"
-                                onClick={() => navigate('/projects')}
-                            >
-                                Projects
-                                <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:left-0"></span>
-                            </div>
-                            <div
-                                className="cursor-pointer group relative"
-                                onClick={() => navigate('/gis-integration')}
-                            >
-                                Maps
-                                <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:left-0"></span>
-                            </div>
-                            <div
-                                className="cursor-pointer group relative"
-                                onClick={() => navigate('/contact')}
-                            >
-                                Contact Us
-                                <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:left-0"></span>
-                            </div>
-                            <div
-                                className="cursor-pointer group relative"
-                                onClick={() => navigate('/about')}
-                            >
-                                About us
-                                <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:left-0"></span>
-                            </div>
-                            <div
-                                className="cursor-pointer group relative"
-                                onClick={() => navigate('/survey')}
-                            >
-                                Survey
-                                <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:left-0"></span>
-                            </div>
+                        <div
+                            className="cursor-pointer group relative"
+                            onClick={() => navigate('/projects')}
+                        >
+                            Projects
+                            <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:left-0"></span>
+                        </div>
+                        <div
+                            className="cursor-pointer group relative"
+                            onClick={() => navigate('/gis-integration')}
+                        >
+                            Maps
+                            <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:left-0"></span>
+                        </div>
+                        <div
+                            className="cursor-pointer group relative"
+                            onClick={() => navigate('/contact')}
+                        >
+                            Contact Us
+                            <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:left-0"></span>
+                        </div>
+                        <div
+                            className="cursor-pointer group relative"
+                            onClick={() => navigate('/about')}
+                        >
+                            About us
+                            <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:left-0"></span>
+                        </div>
+                        <div
+                            className="cursor-pointer group relative"
+                            onClick={() => navigate('/survey')}
+                        >
+                            Survey
+                            <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:left-0"></span>
                         </div>
                     </div>
+                </div>
 
                 <div className="w-16 h-16">
                     <Link to="/profile">
                         <Img
-                            src="images/img_avatar.png"
+                            src="/images/img_avatar.png"
                             alt="Avatar"
                             className="h-full w-full object-cover "
                         />

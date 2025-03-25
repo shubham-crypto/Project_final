@@ -13,6 +13,7 @@ import UserInfo from "./pages/UserInfo";
 import ProtectedRoute from "./components/ProtectedRoutes/ProtectedRoute";
 import MoreInfoPageForAProjectPrevFwcards from "./components/MoreInfoPageForAProjectPrevFwcards/MoreInfoPageForAProjectPrev";
 import UpcomingEvents from "./pages/UpcomingEvents/UpcomingEvents";
+import ProjectDetailsPage from "./pages/ProjectsColored/ProjectDetail";
 
 
 const ProjectRoutes = () => {
@@ -40,6 +41,10 @@ const ProjectRoutes = () => {
         {
             path: "/profile",
             element: <ProtectedRoute element={<UserInfo />} />,
+        },
+        {
+            path: "/project/:id",
+            element: <ProtectedRoute element={<ProjectDetailsPage />} />,
         },
     ]);
     return element;
