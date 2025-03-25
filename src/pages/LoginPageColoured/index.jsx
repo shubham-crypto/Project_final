@@ -14,13 +14,13 @@ export default function LoginPageColouredPage() {
   // Handle Login API Call
   const handleSignIn = async () => {
     try {
-      // const response = await axios.post("http://localhost:5000/api/auth/login", {
-      //   email,
-      //   password,
-      // });
+      const response = await axios.post("http://localhost:5000/api/auth/login", {
+        email,
+        password,
+      });
   
       // If login is successful
-      //login(response.data); // Assuming login function saves user data
+      login(response.data); // Assuming login function saves user data
       navigate("/home"); // Redirect to home page
     } catch (error) {
       console.error("Login error:", error);
