@@ -56,70 +56,77 @@ export default function Header({ ...props }) {
                             d="M4 6h16M4 12h16M4 18h16"
                         />
                     </svg>
-                </button>
-                <div className="hidden md:flex">
-                    <div className="pt-1">
-                        <svg
-                            width="20"
-                            height="20"
-                            viewBox="0 0 20 20"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                d="M2 18V2H18"
-                                stroke="gray"
-                                strokeWidth="3"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                            />
-                        </svg>
+                    </button>
+                    <div className="hidden md:flex">
+                        <div className="pt-1">
+                            <svg
+                                width="20"
+                                height="20"
+                                viewBox="0 0 20 20"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M2 18V2H18"
+                                    stroke="gray"
+                                    strokeWidth="3"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                />
+                            </svg>
+                        </div>
+                        <div className="flex flex-row space-x-8 py-4 ">
+                            <div
+                                className="font-semibold cursor-pointer group relative"
+                                onClick={() => navigate('/Home')}
+                            >
+                                Home
+                                <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:left-0"></span>
+                            </div>
+                            <div
+                                className="cursor-pointer group relative"
+                                onClick={() => navigate('/projects')}
+                            >
+                                Projects
+                                <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:left-0"></span>
+                            </div>
+                            <div
+                                className="cursor-pointer group relative"
+                                onClick={() => navigate('/gis-integration')}
+                            >
+                                Maps
+                                <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:left-0"></span>
+                            </div>
+                            <div
+                                className="cursor-pointer group relative"
+                                onClick={() => navigate('/contact')}
+                            >
+                                Contact Us
+                                <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:left-0"></span>
+                            </div>
+                            <div
+                                className="cursor-pointer group relative"
+                                onClick={() => navigate('/about')}
+                            >
+                                About us
+                                <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:left-0"></span>
+                            </div>
+                            <div
+                                className="cursor-pointer group relative"
+                                onClick={() => navigate('/survey')}
+                            >
+                                Survey
+                                <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:left-0"></span>
+                            </div>
+                            <div
+                                className="cursor-pointer group relative"
+                                onClick={() => navigate('/contractorportal')}
+                            >
+                                Contractor
+                                <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:left-0"></span>
+                            </div>
+                        </div>
                     </div>
-                    <div className="flex flex-row space-x-8 py-4 ">
-                        <div
-                            className="font-semibold cursor-pointer group relative"
-                            onClick={() => navigate('/Home')}
-                        >
-                            Home
-                            <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:left-0"></span>
-                        </div>
-                        <div
-                            className="cursor-pointer group relative"
-                            onClick={() => navigate('/projects')}
-                        >
-                            Projects
-                            <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:left-0"></span>
-                        </div>
-                        <div
-                            className="cursor-pointer group relative"
-                            onClick={() => navigate('/gis-integration')}
-                        >
-                            Maps
-                            <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:left-0"></span>
-                        </div>
-                        <div
-                            className="cursor-pointer group relative"
-                            onClick={() => navigate('/contact')}
-                        >
-                            Contact Us
-                            <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:left-0"></span>
-                        </div>
-                        <div
-                            className="cursor-pointer group relative"
-                            onClick={() => navigate('/about')}
-                        >
-                            About us
-                            <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:left-0"></span>
-                        </div>
-                        <div
-                            className="cursor-pointer group relative"
-                            onClick={() => navigate('/survey')}
-                        >
-                            Survey
-                            <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-full group-hover:left-0"></span>
-                        </div>
-                    </div>
-                </div>
 
                 <div className="w-16 h-16">
                     <Link to="/profile">
@@ -169,6 +176,12 @@ export default function Header({ ...props }) {
                             onClick={() => navigate('/survey')}
                         >
                             Survey
+                        </div>
+                        <div
+                            className="cursor-pointer border-b border-gray-400 pb-2 hover:text-gray-600"
+                            onClick={() => navigate('/contractorportal')}
+                        >
+                            Contractor
                         </div>
                     </div>
                 </div>

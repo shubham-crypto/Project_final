@@ -14,6 +14,7 @@ import ProtectedRoute from "./components/ProtectedRoutes/ProtectedRoute";
 import MoreInfoPageForAProjectPrevFwcards from "./components/MoreInfoPageForAProjectPrevFwcards/MoreInfoPageForAProjectPrev";
 import UpcomingEvents from "./pages/UpcomingEvents/UpcomingEvents";
 import ProjectDetailsPage from "./pages/ProjectsColored/ProjectDetail";
+import { ContractorPortal } from "./pages/ContractorPortal/ContractorPortal";
 
 
 const ProjectRoutes = () => {
@@ -46,6 +47,7 @@ const ProjectRoutes = () => {
             path: "/project/:id",
             element: <ProtectedRoute element={<ProjectDetailsPage />} />,
         },
+        { path: "/contractorportal", element: <ContractorPortal /> },
     ]);
     return element;
 };
