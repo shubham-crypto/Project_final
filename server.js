@@ -6,6 +6,7 @@ connectDB();
 
 // Import Routes
 const authRoutes = require("./routes/authRoutes");
+const mlRoutes = require('./routes/mlRoutes'); 
 // /const userRoutes = require("./routes/userRoutes");
 
 const app = express();
@@ -16,6 +17,7 @@ console.log("MONGO_URI:", process.env.MONGO_URI);
 
 // Use Routes
 app.use("/api/auth", authRoutes);  // Handles login & signup
+app.use('/api/ml', mlRoutes);
 //app.use("/api/users", userRoutes); // Handles user profile & other actions
 
 const PORT = process.env.PORT || 5000;
